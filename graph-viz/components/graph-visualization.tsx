@@ -1,3 +1,4 @@
+
 "use client"
 
 import { useEffect, useRef, useState } from "react"
@@ -16,6 +17,7 @@ interface D3Node extends d3.SimulationNodeDatum {
   title: string
   papers: string[]
   relevance: number
+  summary?: string
 }
 
 interface D3Link extends d3.SimulationLinkDatum<D3Node> {
@@ -42,8 +44,71 @@ export function GraphVisualization({ nodes, edges, nodeSizeScaling = 5 }: GraphV
   // preserve node positions across rebuilds so the graph doesn't jump
   const prevPosRef = useRef<Map<number, { x: number; y: number }>>(new Map())
 
-  // 🔗 your Lambda endpoint returning { nodes, edges }
-  const LAMBDA_URL = "https://as66d7s4oe.execute-api.us-east-1.amazonaws.com/data"
+  //  your Lambda endpoint returning { nodes, edges }
+  const LAMBDA_URL = "https://vnh1q99dvc.execute-api.us-east-1.amazonaws.com/data"
+
+    // optimization state + endpoint
+  const [isOptimizing, setIsOptimizing] = useState(false)
+  const OPTIMIZE_URL = "https://vnh1q99dvc.execute-api.us-east-1.amazonaws.com/optimize"
+
+
+    const handleOptimize = async () => {
+    if (isOptimizing) return
+    setIsOptimizing(true)
+
+    try {
+      // 1) trigger optimization
+      const res = await fetch(OPTIMIZE_URL, { method: "POST" })
+      if (!res.ok) throw new Error(`Optimize failed: ${res.status} ${res.statusText}`)
+
+      // 2) on success, refetch latest graph data and merge in
+      const edgeKey = (e: Edge) => {
+        const a = Math.min(e.nodeID1, e.nodeID2)
+        const b = Math.max(e.nodeID1, e.nodeID2)
+        return `${a}-${b}`
+      }
+
+      const getRes = await fetch(LAMBDA_URL, {
+        method: "GET",
+        mode: "cors",
+        cache: "no-store",
+        headers: { "pragma": "no-cache", "cache-control": "no-cache" },
+      })
+      if (!getRes.ok) throw new Error(`Refresh failed: ${getRes.status} ${getRes.statusText}`)
+
+      const raw = await getRes.json()
+      const json = raw.data ?? raw
+
+      if (!Array.isArray(json?.nodes) || !Array.isArray(json?.edges)) {
+        throw new Error("Unexpected JSON shape after optimize")
+      }
+
+      // merge nodes (new overwrites old, preserve existing fields like summary)
+      setDataNodes(prev => {
+        const byId = new Map<number, Node>(prev.map(n => [n.id, n]))
+        for (const n of json.nodes) {
+          const old = byId.get(n.id)
+          byId.set(n.id, old ? { ...old, ...n } : n)
+        }
+        return Array.from(byId.values())
+      })
+
+      // merge edges (dedupe undirected)
+      setDataEdges(prev => {
+        const seen = new Set(prev.map(edgeKey))
+        const merged = [...prev]
+        for (const e of json.edges as Edge[]) {
+          const k = edgeKey(e)
+          if (!seen.has(k)) { merged.push(e); seen.add(k) }
+        }
+        return merged
+      })
+    } catch (err) {
+      console.error("[optimize] error:", err)
+    } finally {
+      setIsOptimizing(false)
+    }
+  }
 
 
 
@@ -75,7 +140,7 @@ export function GraphVisualization({ nodes, edges, nodeSizeScaling = 5 }: GraphV
           return
         }
         const raw = await res.json()
-        const json = raw.data ?? raw  // ✅ unwraps { data: { nodes, edges } }
+        const json = raw.data ?? raw  // unwraps { data: { nodes, edges } }
 
         if (!isMounted) return
 
@@ -87,12 +152,17 @@ export function GraphVisualization({ nodes, edges, nodeSizeScaling = 5 }: GraphV
 
         // Merge nodes by id (new overwrites old)
         setDataNodes(prev => {
-          const byId = new Map<number, Node>(prev.map(n => [n.id, n]))
-          for (const n of json.nodes) byId.set(n.id, n)
-          const out = Array.from(byId.values())
-          console.log(`[graph] nodes: ${prev.length} -> ${out.length}`)
-          return out
-        })
+  const byId = new Map<number, Node>(prev.map(n => [n.id, n]))
+  for (const n of json.nodes) {
+    const old = byId.get(n.id)
+    // merge to keep existing fields (like summary) if the new object doesn't include them
+    byId.set(n.id, old ? { ...old, ...n } : n)
+  }
+  const out = Array.from(byId.values())
+  console.log(`[graph] nodes: ${prev.length} -> ${out.length}`)
+  return out
+})
+
 
         // Merge edges by normalized key (append only brand-new edges)
         setDataEdges(prev => {
@@ -255,8 +325,8 @@ export function GraphVisualization({ nodes, edges, nodeSizeScaling = 5 }: GraphV
       .join("circle")
       .attr("class", "node-circle")
       .attr("r", (d) => getNodeRadius(d.id))
-      .attr("fill", "oklch(0.65 0.2 240)")
-      .attr("stroke", "oklch(0.85 0.15 240)")
+      .attr("fill", "oklch(0.7014 0.1011 22.1)")
+      .attr("stroke", "#f7d7d7")
       .attr("stroke-width", 3)
       .attr("cursor", "pointer")
       .on("click", (event, d) => {
@@ -382,14 +452,14 @@ export function GraphVisualization({ nodes, edges, nodeSizeScaling = 5 }: GraphV
           .transition()
           .duration(200)
           .attr("filter", "url(#glow)")
-          .attr("stroke", "oklch(0.7 0.25 270)")
+          .attr("stroke", "#f29b9b")
           .attr("stroke-width", 5)
       } else {
         circle
           .transition()
           .duration(200)
           .attr("filter", null)
-          .attr("stroke", "oklch(0.85 0.15 240)")
+          .attr("stroke", "#f7d7d7")
           .attr("stroke-width", 3)
       }
     })
@@ -419,34 +489,66 @@ export function GraphVisualization({ nodes, edges, nodeSizeScaling = 5 }: GraphV
 
 
       {(selectedNode || hoveredEdge) && (
-        <Card className="absolute bottom-6 left-6 right-6 max-w-2xl p-6 bg-white border-gray-200 shadow-2xl pointer-events-auto">
-          {selectedNode && (
-            <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">{selectedNode.title}</h3>
-              <div className="space-y-2">
-                <div>
-                  <span className="text-sm font-semibold text-gray-700">Papers:</span>
-                  <ul className="mt-1 space-y-1">
-                    {selectedNode.papers.map((paper, idx) => (
-                      <li key={idx} className="text-sm text-blue-600 hover:text-blue-800 transition-colors">
-                        <a href={paper} target="_blank" rel="noopener noreferrer" className="underline">
-                          {paper}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          )}
-          {hoveredEdge && !selectedNode && (
-            <div>
-              <h3 className="text-sm font-semibold text-gray-700 mb-1">Relationship</h3>
-              <p className="text-base text-gray-900">{hoveredEdge}</p>
-            </div>
-          )}
-        </Card>
+  <Card className="absolute bottom-6 left-6 right-6 max-w-2xl p-6 bg-white border-gray-200 shadow-2xl pointer-events-auto">
+    {selectedNode && (
+      <div>
+        <h3 className="text-xl font-bold text-gray-900 mb-2">{selectedNode.title}</h3>
+
+        {/* show summary if present */}
+        {selectedNode.summary && (
+          <p className="text-sm text-gray-700 mb-3">{selectedNode.summary}</p>
+        )}
+
+        <div className="space-y-2">
+          <div>
+            <span className="text-sm font-semibold text-gray-700">Papers:</span>
+            <ul className="mt-1 space-y-1">
+              {selectedNode.papers.map((paper, idx) => (
+                <li key={idx} className="text-sm text-blue-600 hover:text-blue-800 transition-colors">
+                  <a href={paper} target="_blank" rel="noopener noreferrer" className="underline">
+                    {paper}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    )}
+
+    {hoveredEdge && !selectedNode && (
+      <div>
+        <h3 className="text-sm font-semibold text-gray-700 mb-1">Relationship</h3>
+        <p className="text-base text-gray-900">{hoveredEdge}</p>
+      </div>
+    )}
+  </Card>
+)}
+
+
+      <div className="absolute bottom-6 right-6 z-10 pointer-events-auto">
+        <button
+          onClick={handleOptimize}
+          className="px-12 py-6 rounded-xl shadow-lg bg-black text-white text-lg font-semibold hover:opacity-90 active:scale-95 transition-transform duration-150"
+          aria-label="Optimize flowchart"
+        >
+          Optimize
+        </button>
+      </div>
+
+
+            {isOptimizing && (
+        <div className="absolute inset-0 bg-white/70 backdrop-blur-[2px] flex items-center justify-center">
+          <div className="animate-pulse text-gray-800 text-sm font-medium">
+            Optimizing flowchart…
+          </div>
+        </div>
       )}
+
+
+
+
+
     </div>
   )
 }
