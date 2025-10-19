@@ -1,0 +1,56 @@
+service: json-pull-api
+
+provider:
+  name: aws
+  runtime: nodejs20.x
+  region: us-east-1
+  httpApi:
+    cors:
+      allowedOrigins:
+        - "*"              # tighten in prod
+      allowedMethods: [GET, POST, OPTIONS]
+      allowedHeaders: [Content-Type, Authorization]
+  environment:
+    TABLE_NAME: ${self:service}-store-${sls:stage}
+    ITEM_KEY: "latest"               # change if you want a different pk value
+    UPLOAD_TOKEN: ${env:UPLOAD_TOKEN}  # set in shell before deploy
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+      Resource:
+        - arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:provider.environment.TABLE_NAME}
+
+functions:
+  getData:
+    handler: src/getData.handler
+    timeout: 10
+    memorySize: 256
+    events:
+      - httpApi:
+          path: /data
+          method: GET
+
+  writeData:
+    handler: src/writeData.handler
+    timeout: 10
+    memorySize: 256
+    events:
+      - httpApi:
+          path: /data
+          method: POST
+
+resources:
+  Resources:
+    StoreTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:provider.environment.TABLE_NAME}
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: pk
+            AttributeType: S
+        KeySchema:
+          - AttributeName: pk
+            KeyType: HASH

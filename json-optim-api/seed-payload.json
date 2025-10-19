@@ -1,0 +1,11 @@
+{
+  "nodes": [
+    { "id": 1, "title": "Route optimization", "papers": ["doi:10.0001/x"], "relevance": 0.92 },
+    { "id": 2, "title": "Logistics AI", "papers": ["doi:10.0002/y", "https://arxiv.org/abs/1234.5678"], "relevance": 0.87 },
+    { "id": 3, "title": "Wildfire sensors", "papers": [], "relevance": 0.74 }
+  ],
+  "edges": [
+    { "nodeID1": 1, "nodeID2": 2, "reasoning": "Both focus on logistics optimization" },
+    { "nodeID1": 2, "nodeID2": 3, "reasoning": "AI sensing links to supply resilience" }
+  ]
+}

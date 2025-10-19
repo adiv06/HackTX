@@ -1,0 +1,14 @@
+{
+  "name": "json-pull-api",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "GET /data that returns a JSON blob from DynamoDB",
+  "scripts": {
+    "deploy": "serverless deploy",
+    "remove": "serverless remove",
+    "invoke:local": "serverless invoke local -f getData"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.670.0"
+  }
+}
