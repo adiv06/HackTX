@@ -19,6 +19,7 @@ function isValidGraphPayload(payload) {
   const nodesOk = nodes.every(n =>
     n && typeof n.id === "number" &&
     typeof n.title === "string" &&
+    typeof n.summary === "string" &&
     Array.isArray(n.papers) && n.papers.every(p => typeof p === "string") &&
     typeof n.relevance === "number"
   );
