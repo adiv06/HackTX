@@ -1,0 +1,8 @@
+{
+  "pk": {
+    "S": "latest"
+  },
+  "payload": {
+    "S": "{\n  \"nodes\": [\n    { \"id\": 1, \"title\": \"Route optimization\", \"papers\": [\"doi:10.0001/x\"], \"relevance\": 0.92 },\n    { \"id\": 2, \"title\": \"Logistics AI\", \"papers\": [\"doi:10.0002/y\", \"https://arxiv.org/abs/1234.5678\"], \"relevance\": 0.87 },\n    { \"id\": 3, \"title\": \"Wildfire sensors\", \"papers\": [], \"relevance\": 0.74 }\n  ],\n  \"edges\": [\n    { \"nodeID1\": 1, \"nodeID2\": 2, \"reasoning\": \"Both focus on logistics optimization\" },\n    { \"nodeID1\": 2, \"nodeID2\": 3, \"reasoning\": \"AI sensing links to supply resilience\" }\n  ]\n}\n"
+  }
+}
