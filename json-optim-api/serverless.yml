@@ -7,13 +7,17 @@ provider:
   httpApi:
     cors:
       allowedOrigins:
-        - "*"              # tighten in prod
+        - "*"                       # tighten in prod
       allowedMethods: [GET, POST, OPTIONS]
       allowedHeaders: [Content-Type, Authorization]
   environment:
+    SERPAPI_KEY: ${env:SERPAPI_KEY}
     TABLE_NAME: ${self:service}-store-${sls:stage}
-    ITEM_KEY: "latest"               # change if you want a different pk value
-    UPLOAD_TOKEN: ${env:UPLOAD_TOKEN}  # set in shell before deploy
+    ITEM_KEY: "latest"
+    UPLOAD_TOKEN: ${env:UPLOAD_TOKEN}        # already used by POST /data if you added it
+    OPENAI_API_KEY: ${env:OPENAI_API_KEY}    # <-- set in your shell
+    OPENAI_MODEL: ${env:OPENAI_MODEL, 'gpt-4o-mini'}  # reasonable default
+    S2_PAPERS_PER_NODE: ${env:S2_PAPERS_PER_NODE, '3'} # how many papers to attach per node
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -32,13 +36,22 @@ functions:
           path: /data
           method: GET
 
-  writeData:
+  writeData:                  # (optional) your upload endpoint from earlier
     handler: src/writeData.handler
     timeout: 10
     memorySize: 256
     events:
       - httpApi:
           path: /data
+          method: POST
+
+  optimize:
+    handler: src/optimize.handler
+    timeout: 28               # keep < 30s API Gateway cap
+    memorySize: 1024          # more CPU → faster LLM + HTTP calls
+    events:
+      - httpApi:
+          path: /optimize
           method: POST
 
 resources:
