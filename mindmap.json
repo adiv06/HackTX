@@ -1,218 +1,388 @@
 {
   "nodes": [
     {
-      "id": "read_slides",
-      "label": "Read Slides"
+      "id": 1,
+      "title": "Seed",
+      "summary": "This is the start of the your mind map.",
+      "papers": [],
+      "relevance": 0
     },
     {
-      "id": "helpful",
-      "label": "Helpful"
+      "id": 2,
+      "title": "Recording",
+      "summary": "The process of capturing audio or video that has just started, according to the speaker.",
+      "papers": [],
+      "relevance": 0.9
     },
     {
-      "id": "understanding",
-      "label": "Understanding"
+      "id": 3,
+      "title": "Waiting Period",
+      "summary": "A specified duration of approximately thirty seconds required for a process to complete or stabilize, mentioned multiple times.",
+      "papers": [],
+      "relevance": 0.8
     },
     {
-      "id": "no_slides",
-      "label": "No Slides Available"
+      "id": 4,
+      "title": "Demo Video",
+      "summary": "A specific type of video intended for demonstration purposes, which is planned for future action.",
+      "papers": [],
+      "relevance": 0.7
     },
     {
-      "id": "make_nice",
-      "label": "Make Nice"
+      "id": 5,
+      "title": "Uploading",
+      "summary": "The action of transferring the demo video to another platform or location, to be performed at a later time.",
+      "papers": [],
+      "relevance": 0.6
     },
     {
-      "id": "solution",
-      "label": "Solution"
+      "id": 6,
+      "title": "Next Steps",
+      "summary": "Refers to the subsequent actions or plans that need to be considered or addressed after the current tasks.",
+      "papers": [],
+      "relevance": 0.5
     },
     {
-      "id": "student_organization",
-      "label": "Student Organization"
+      "id": 7,
+      "title": "Content Push/Post",
+      "summary": "Refers to the action of making content or data available, publishing, or committing it, as implied by the phrases 'hasn't pushed anything' and 'posted it just now'.",
+      "papers": [],
+      "relevance": 0.75
     },
     {
-      "id": "connect",
-      "label": "Connect"
+      "id": 8,
+      "title": "JSON Data",
+      "summary": "A specific data format that is mentioned and whose operational status ('seems to be working now') is currently being discussed.",
+      "papers": [],
+      "relevance": 0.85
     },
     {
-      "id": "guadalupe",
-      "label": "Guadalupe"
+      "id": 9,
+      "title": "Operational Status",
+      "summary": "Indicates the current functional state of a system or component, specifically that the JSON data is now 'working', implying a resolution to a previous issue.",
+      "papers": [],
+      "relevance": 0.65
     },
     {
-      "id": "problem_context",
-      "label": "Problem Context"
+      "id": 10,
+      "title": "Title",
+      "summary": "A label or name for content, which is noted as currently missing or needing to be defined for an upcoming video or post.",
+      "papers": [],
+      "relevance": 0.7
     },
     {
-      "id": "research_team",
-      "label": "Research Team"
+      "id": 11,
+      "title": "Video Creation",
+      "summary": "The action or requirement of producing a video, explicitly stated as a task that 'we do have to make'.",
+      "papers": [],
+      "relevance": 0.9
     },
     {
-      "id": "hyperloops",
-      "label": "Hyperloops"
+      "id": 12,
+      "title": "Desk Post",
+      "summary": "A specific type of content or publication, referred to as 'our desk post', that is planned to be created or published.",
+      "papers": [],
+      "relevance": 0.95
     },
     {
-      "id": "novel_topic",
-      "label": "Novel Topic"
+      "id": 13,
+      "title": "Fill Up Base",
+      "summary": "A preliminary or foundational action, described as being performed 'briefly,' likely setting up an initial state or configuration.",
+      "papers": [],
+      "relevance": 0.7
     },
     {
-      "id": "trouble",
-      "label": "Trouble"
+      "id": 14,
+      "title": "Idea Verification",
+      "summary": "The process of confirming or validating a proposed concept or plan, following an initial assessment that it is a 'good idea.'",
+      "papers": [],
+      "relevance": 0.8
     },
     {
-      "id": "organization",
-      "label": "Organization"
+      "id": 15,
+      "title": "Elevated Position",
+      "summary": "Refers to one participant being situated at a slightly higher physical level, potentially for better visibility or as part of a demonstration setup.",
+      "papers": [],
+      "relevance": 0.75
     },
     {
-      "id": "many_ideas",
-      "label": "Many Ideas"
+      "id": 16,
+      "title": "Group Observation",
+      "summary": "The collective action of the remaining participants moving around and intently watching a central event or demonstration.",
+      "papers": [],
+      "relevance": 0.8
     },
     {
-      "id": "many_spaces",
-      "label": "Many Spaces"
+      "id": 17,
+      "title": "Dev Post",
+      "summary": "A specific type of post, likely for developers or about development, that the speaker intends to add participants to and contribute content to.",
+      "papers": [],
+      "relevance": 0.9
     },
     {
-      "id": "good_idea",
-      "label": "Good Idea"
+      "id": 18,
+      "title": "Content Typing",
+      "summary": "The action of preparing or drafting textual content by typing, specifically referring to 'our stuff' for an upcoming post.",
+      "papers": [],
+      "relevance": 0.8
     },
     {
-      "id": "testing",
-      "label": "Testing"
+      "id": 19,
+      "title": "Our Content (Draft)",
+      "summary": "Refers to the material or information that the speaker plans to type out and include in the 'Dev Post.'",
+      "papers": [],
+      "relevance": 0.75
     },
     {
-      "id": "path",
-      "label": "Path"
+      "id": 20,
+      "title": "Display/Retrieval Action",
+      "summary": "The action of making information or data visible, often by retrieving it and showing it on an interface, as inquired by the speaker ('pull it up').",
+      "papers": [],
+      "relevance": 0.85
     },
     {
-      "id": "leaving_behind",
-      "label": "Leaving Behind"
+      "id": 21,
+      "title": "Current Status Check",
+      "summary": "The speaker's inquiry about whether a specific action or process, such as data retrieval and display, is occurring or complete at the present moment ('Does it pull it up now?').",
+      "papers": [],
+      "relevance": 0.8
     },
     {
-      "id": "revisit",
-      "label": "Revisit"
+      "id": 22,
+      "title": "Expressed Approval",
+      "summary": "The speaker's positive sentiment or satisfaction concerning something observed or confirmed, indicated by the repeated phrase 'I like that. I like that one.'",
+      "papers": [],
+      "relevance": 0.9
     },
     {
-      "id": "future",
-      "label": "Future"
+      "id": 23,
+      "title": "Continuous Update",
+      "summary": "The process of an entity or system repeatedly modifying its state or data, expected to continue in the future, as indicated by 'it's gonna keep updating it'.",
+      "papers": [],
+      "relevance": 0.8
     },
     {
-      "id": "big_issue",
-      "label": "Big Issue"
+      "id": 24,
+      "title": "Acceptance of Consistency",
+      "summary": "A verbal affirmation that the observed state or process is acceptable and aligns with previous expectations or states, indicating stability, as in 'That's fine. That's fine. It's same thing.'",
+      "papers": [],
+      "relevance": 0.7
     },
     {
-      "id": "tackle",
-      "label": "Tackle"
+      "id": 25,
+      "title": "Difficulty Acknowledgment",
+      "summary": "The speaker's direct recognition or statement that a particular situation or task presents a challenge or is difficult to manage, as noted by 'that's tough'.",
+      "papers": [],
+      "relevance": 0.75
     },
     {
-      "id": "cloud",
-      "label": "Cloud"
+      "id": 26,
+      "title": "Conditional Hope",
+      "summary": "An expression of optimism for a desired result, which is made conditional on a past action or decision taken by the speaker, implying some uncertainty, as heard in 'hopefully, if I did it'.",
+      "papers": [],
+      "relevance": 0.65
     },
     {
-      "id": "brain",
-      "label": "Brain"
+      "id": 27,
+      "label": "Two-by-Two Arrangement",
+      "summary": "A suggested or observed grouping pattern, likely referring to people or items being paired, as in 'Two by two'.",
+      "papers": [],
+      "relevance": 0.7
     },
     {
-      "id": "brainware",
-      "label": "Brainware"
+      "id": 28,
+      "label": "Arrangement Setup",
+      "summary": "The act of arranging or configuring elements, explicitly mentioned as 'I'll set this up' and 'We'll set it'.",
+      "papers": [],
+      "relevance": 0.9
     },
     {
-      "id": "fall",
-      "label": "Fall"
+      "id": 29,
+      "label": "Verbal Communication",
+      "summary": "The act of speaking or conversing, referred to as 'when we're talking' and 'two people are talking'.",
+      "papers": [],
+      "relevance": 0.8
     },
     {
-      "id": "apology",
-      "label": "Apology"
+      "id": 30,
+      "label": "Laptop Preparedness",
+      "summary": "The state or instruction for a participant to have their laptop open and ready for use during a discussion or presentation ('have your laptop up').",
+      "papers": [],
+      "relevance": 0.85
+    },
+    {
+      "id": 31,
+      "label": "Cursor Reference",
+      "summary": "A specific mention of a 'Cursor', possibly in the context of demonstrating something on a screen or pointing during a discussion.",
+      "papers": [],
+      "relevance": 0.6
+    },
+    {
+      "id": 32,
+      "label": "Two-Person Discussion",
+      "summary": "A specific scenario or suggestion involving only two individuals engaged in verbal communication ('just two people are talking').",
+      "papers": [],
+      "relevance": 0.85
+    },
+    {
+      "id": 33,
+      "label": "Participant: Thomas",
+      "summary": "A named participant in the conversation, whose suggestion is mentioned ('Thomas, like, Why don't we just bring more Email').",
+      "papers": [],
+      "relevance": 0.9
+    },
+    {
+      "id": 34,
+      "label": "Email Involvement",
+      "summary": "A suggestion or question about increasing the use or involvement of email in a process or discussion ('bring more Email').",
+      "papers": [],
+      "relevance": 0.7
+    },
+    {
+      "id": 35,
+      "label": "Participant: Pranav",
+      "summary": "A named participant from whom an email address is requested ('Pranav, what's your email?').",
+      "papers": [],
+      "relevance": 0.9
+    },
+    {
+      "id": 36,
+      "label": "Email Address Request",
+      "summary": "The explicit action of asking for a participant's email address, specifically 'Pranav, what's your email?'.",
+      "papers": [],
+      "relevance": 0.9
     }
   ],
   "edges": [
     {
-      "from": "read_slides",
-      "to": "helpful"
+      "nodeID1": 22,
+      "nodeID2": 9,
+      "reasoning": "The 'Expressed Approval' \"I like where it's at\" signifies satisfaction with the current 'Operational Status' of the system."
     },
     {
-      "from": "understanding",
-      "to": "read_slides"
+      "nodeID1": 22,
+      "nodeID2": 20,
+      "reasoning": "The 'Expressed Approval' \"I like where it's at\" likely refers to the positive outcome of the 'Display/Retrieval Action' of data."
     },
     {
-      "from": "no_slides",
-      "to": "understanding"
+      "nodeID1": 23,
+      "nodeID2": 9,
+      "reasoning": "The 'Continuous Update' process is expected to maintain or improve the 'Operational Status' of the system."
     },
     {
-      "from": "make_nice",
-      "to": "understanding"
+      "nodeID1": 8,
+      "nodeID2": 23,
+      "reasoning": "The 'Continuous Update' likely refers to modifications being made to the 'JSON Data' or related data streams."
     },
     {
-      "from": "student_organization",
-      "to": "solution"
+      "nodeID1": 24,
+      "nodeID2": 23,
+      "reasoning": "The speaker's 'Acceptance of Consistency' suggests that the 'Continuous Update' process is proceeding as expected and without issues."
     },
     {
-      "from": "connect",
-      "to": "student_organization"
+      "nodeID1": 24,
+      "nodeID2": 9,
+      "reasoning": "The 'Acceptance of Consistency' indicates satisfaction with the current 'Operational Status' and that it remains stable or predictable."
     },
     {
-      "from": "guadalupe",
-      "to": "connect"
+      "nodeID1": 26,
+      "nodeID2": 25,
+      "reasoning": "The 'Conditional Hope' for a positive outcome is expressed in the context of recognizing the 'Difficulty Acknowledgment' of the task."
     },
     {
-      "from": "problem_context",
-      "to": "solution"
+      "nodeID1": 25,
+      "nodeID2": 7,
+      "reasoning": "The 'Difficulty Acknowledgment' (\"that's tough\") might refer to the challenges associated with a previous 'Content Push/Post' or a similar significant action."
     },
     {
-      "from": "research_team",
-      "to": "organization"
+      "nodeID1": 26,
+      "nodeID2": 7,
+      "reasoning": "The 'Conditional Hope' (\"hopefully, if I did it\") is likely tied to the successful completion or outcome of a 'Content Push/Post' or a related major task."
     },
     {
-      "from": "organization",
-      "to": "hyperloops"
+      "from": 22,
+      "to": 9,
+      "reasoning": "The 'Expressed Approval' \"I like where it's at\" signifies satisfaction with the current 'Operational Status' of the system."
     },
     {
-      "from": "hyperloops",
-      "to": "novel_topic"
+      "from": 22,
+      "to": 20,
+      "reasoning": "The 'Expressed Approval' \"I like where it's at\" likely refers to the positive outcome of the 'Display/Retrieval Action' of data."
     },
     {
-      "from": "novel_topic",
-      "to": "trouble"
+      "from": 23,
+      "to": 9,
+      "reasoning": "The 'Continuous Update' process is expected to maintain or improve the 'Operational Status' of the system."
     },
     {
-      "from": "many_ideas",
-      "to": "good_idea"
+      "from": 8,
+      "to": 23,
+      "reasoning": "The 'Continuous Update' likely refers to modifications being made to the 'JSON Data' or related data streams."
     },
     {
-      "from": "many_spaces",
-      "to": "good_idea"
+      "from": 24,
+      "to": 23,
+      "reasoning": "The speaker's 'Acceptance of Consistency' suggests that the 'Continuous Update' process is proceeding as expected and without issues."
     },
     {
-      "from": "good_idea",
-      "to": "testing"
+      "from": 24,
+      "to": 9,
+      "reasoning": "The 'Acceptance of Consistency' indicates satisfaction with the current 'Operational Status' and that it remains stable or predictable."
     },
     {
-      "from": "path",
-      "to": "leaving_behind"
+      "from": 26,
+      "to": 25,
+      "reasoning": "The 'Conditional Hope' for a positive outcome is expressed in the context of recognizing the 'Difficulty Acknowledgment' of the task."
     },
     {
-      "from": "leaving_behind",
-      "to": "revisit"
+      "from": 25,
+      "to": 7,
+      "reasoning": "The 'Difficulty Acknowledgment' (\"that's tough\") might refer to the challenges associated with a previous 'Content Push/Post' or a similar significant action."
     },
     {
-      "from": "revisit",
-      "to": "future"
+      "from": 26,
+      "to": 7,
+      "reasoning": "The 'Conditional Hope' (\"hopefully, if I did it\") is likely tied to the successful completion or outcome of a 'Content Push/Post' or a related major task."
     },
     {
-      "from": "big_issue",
-      "to": "tackle"
+      "from": 28,
+      "to": 27,
+      "reasoning": "The 'Arrangement Setup' is being planned or executed according to a specific 'Two-by-Two Arrangement' pattern."
     },
     {
-      "from": "tackle",
-      "to": "cloud"
+      "from": 30,
+      "to": 29,
+      "reasoning": "Participants are instructed to ensure 'Laptop Preparedness' concurrently with engaging in 'Verbal Communication'."
     },
     {
-      "from": "tackle",
-      "to": "brain"
+      "from": 32,
+      "to": 29,
+      "reasoning": "'Two-Person Discussion' is a specific type or scenario of general 'Verbal Communication'."
     },
     {
-      "from": "brain",
-      "to": "brainware"
+      "from": 33,
+      "to": 34,
+      "reasoning": "'Participant: Thomas' proposes the idea of incorporating more 'Email Involvement'."
     },
     {
-      "from": "fall",
-      "to": "apology"
+      "from": 36,
+      "to": 35,
+      "reasoning": "The 'Email Address Request' is directly made to 'Participant: Pranav'."
+    },
+    {
+      "from": 36,
+      "to": 34,
+      "reasoning": "The 'Email Address Request' is a specific action taken to facilitate broader 'Email Involvement'."
+    },
+    {
+      "from": 28,
+      "to": 16,
+      "reasoning": "The 'Arrangement Setup' is likely being configured to accommodate or facilitate activities such as 'Group Observation' or discussion among participants."
+    },
+    {
+      "from": 31,
+      "to": 29,
+      "reasoning": "The 'Cursor Reference' is mentioned within the context of and likely as an element of visual aid during 'Verbal Communication'."
     }
   ]
 }
