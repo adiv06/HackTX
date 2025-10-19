@@ -1,0 +1,218 @@
+{
+  "nodes": [
+    {
+      "id": "read_slides",
+      "label": "Read Slides"
+    },
+    {
+      "id": "helpful",
+      "label": "Helpful"
+    },
+    {
+      "id": "understanding",
+      "label": "Understanding"
+    },
+    {
+      "id": "no_slides",
+      "label": "No Slides Available"
+    },
+    {
+      "id": "make_nice",
+      "label": "Make Nice"
+    },
+    {
+      "id": "solution",
+      "label": "Solution"
+    },
+    {
+      "id": "student_organization",
+      "label": "Student Organization"
+    },
+    {
+      "id": "connect",
+      "label": "Connect"
+    },
+    {
+      "id": "guadalupe",
+      "label": "Guadalupe"
+    },
+    {
+      "id": "problem_context",
+      "label": "Problem Context"
+    },
+    {
+      "id": "research_team",
+      "label": "Research Team"
+    },
+    {
+      "id": "hyperloops",
+      "label": "Hyperloops"
+    },
+    {
+      "id": "novel_topic",
+      "label": "Novel Topic"
+    },
+    {
+      "id": "trouble",
+      "label": "Trouble"
+    },
+    {
+      "id": "organization",
+      "label": "Organization"
+    },
+    {
+      "id": "many_ideas",
+      "label": "Many Ideas"
+    },
+    {
+      "id": "many_spaces",
+      "label": "Many Spaces"
+    },
+    {
+      "id": "good_idea",
+      "label": "Good Idea"
+    },
+    {
+      "id": "testing",
+      "label": "Testing"
+    },
+    {
+      "id": "path",
+      "label": "Path"
+    },
+    {
+      "id": "leaving_behind",
+      "label": "Leaving Behind"
+    },
+    {
+      "id": "revisit",
+      "label": "Revisit"
+    },
+    {
+      "id": "future",
+      "label": "Future"
+    },
+    {
+      "id": "big_issue",
+      "label": "Big Issue"
+    },
+    {
+      "id": "tackle",
+      "label": "Tackle"
+    },
+    {
+      "id": "cloud",
+      "label": "Cloud"
+    },
+    {
+      "id": "brain",
+      "label": "Brain"
+    },
+    {
+      "id": "brainware",
+      "label": "Brainware"
+    },
+    {
+      "id": "fall",
+      "label": "Fall"
+    },
+    {
+      "id": "apology",
+      "label": "Apology"
+    }
+  ],
+  "edges": [
+    {
+      "from": "read_slides",
+      "to": "helpful"
+    },
+    {
+      "from": "understanding",
+      "to": "read_slides"
+    },
+    {
+      "from": "no_slides",
+      "to": "understanding"
+    },
+    {
+      "from": "make_nice",
+      "to": "understanding"
+    },
+    {
+      "from": "student_organization",
+      "to": "solution"
+    },
+    {
+      "from": "connect",
+      "to": "student_organization"
+    },
+    {
+      "from": "guadalupe",
+      "to": "connect"
+    },
+    {
+      "from": "problem_context",
+      "to": "solution"
+    },
+    {
+      "from": "research_team",
+      "to": "organization"
+    },
+    {
+      "from": "organization",
+      "to": "hyperloops"
+    },
+    {
+      "from": "hyperloops",
+      "to": "novel_topic"
+    },
+    {
+      "from": "novel_topic",
+      "to": "trouble"
+    },
+    {
+      "from": "many_ideas",
+      "to": "good_idea"
+    },
+    {
+      "from": "many_spaces",
+      "to": "good_idea"
+    },
+    {
+      "from": "good_idea",
+      "to": "testing"
+    },
+    {
+      "from": "path",
+      "to": "leaving_behind"
+    },
+    {
+      "from": "leaving_behind",
+      "to": "revisit"
+    },
+    {
+      "from": "revisit",
+      "to": "future"
+    },
+    {
+      "from": "big_issue",
+      "to": "tackle"
+    },
+    {
+      "from": "tackle",
+      "to": "cloud"
+    },
+    {
+      "from": "tackle",
+      "to": "brain"
+    },
+    {
+      "from": "brain",
+      "to": "brainware"
+    },
+    {
+      "from": "fall",
+      "to": "apology"
+    }
+  ]
+}
